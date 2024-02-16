@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('flights', function (Blueprint $table) {
             $table->id();
             $table->foreignId('airline_id')->constrained();
-            $table->foreign('origin_id')->references('id')->on('cities');
-            $table->foreign('destination_id')->references('id')->on('cities');
+            $table->foreignId('origin_id')->constrained('cities', 'id');
+            $table->foreignId('destination_id')->constrained('cities', 'id');
             $table->integer('distance');
             $table->integer('flight_time');
             $table->integer('huf_per_km');
