@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAirlineRequest;
 use App\Http\Requests\UpdateAirlineRequest;
+use App\Http\Resources\AirlineResource;
 use App\Models\Airline;
 
 class AirlineController extends Controller
@@ -13,7 +14,8 @@ class AirlineController extends Controller
      */
     public function index()
     {
-        //
+        $airlines = Airline::get();
+        return AirlineResource::collection($airlines);
     }
 
     /**

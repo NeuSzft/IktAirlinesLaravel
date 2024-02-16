@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreFlightRequest;
 use App\Http\Requests\UpdateFlightRequest;
+use App\Http\Resources\FlightResource;
 use App\Models\Flight;
 
 class FlightController extends Controller
@@ -13,7 +14,8 @@ class FlightController extends Controller
      */
     public function index()
     {
-        //
+        $flights = Flight::get();
+        return FlightResource::collection($flights);
     }
 
     /**
@@ -24,12 +26,12 @@ class FlightController extends Controller
         //
     }
 
-        /**
+    /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+        //$flight = Flight::with();
     }
 
     /**
