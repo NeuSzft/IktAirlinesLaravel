@@ -17,14 +17,6 @@ class AirlineController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreAirlineRequest $request)
@@ -35,15 +27,7 @@ class AirlineController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Airline $airline)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Airline $airline)
+    public function show(string $id)
     {
         //
     }
@@ -51,7 +35,7 @@ class AirlineController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAirlineRequest $request, Airline $airline)
+    public function update(UpdateAirlineRequest $request, string $id)
     {
         //
     }
@@ -59,7 +43,7 @@ class AirlineController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Airline $airline)
+    public function destroy(string $id)
     {
         //
     }
