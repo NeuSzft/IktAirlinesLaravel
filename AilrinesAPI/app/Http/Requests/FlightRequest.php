@@ -22,7 +22,12 @@ class FlightRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'airline_id' => ['required', 'exists:airlines,id'],
+            'origin_id' => ['required', 'exists:cities,id'],
+            'destination_id' => ['required', 'exists:cities,id'],
+            'distance' => ['required', 'integer', 'gt:0'],
+            'flight_time' => ['required', 'integer', 'gt:0'],
+            'huf_per_km' => ['required', 'integer', 'gte:0'],
         ];
     }
 }
