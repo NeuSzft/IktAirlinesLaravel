@@ -11,7 +11,7 @@ class UpdateAirlineRequest extends AirlineRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -19,12 +19,11 @@ class UpdateAirlineRequest extends AirlineRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    /*
+
     public function rules(): array
     {
-        return [
-            //
+        return parent::rules() + [
+            
         ];
     }
-    */
 }

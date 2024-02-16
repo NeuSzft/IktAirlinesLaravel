@@ -11,7 +11,7 @@ class UpdateCityRequest extends CityRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -19,12 +19,11 @@ class UpdateCityRequest extends CityRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    /*
+
     public function rules(): array
     {
-        return [
-            //
+        return parent::rules() + [
+            
         ];
     }
-    */
 }
