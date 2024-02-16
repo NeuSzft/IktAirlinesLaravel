@@ -23,7 +23,9 @@ class CityController extends Controller
      */
     public function store(StoreCityRequest $request)
     {
-        //
+        $data = $request->validated();
+        $city = City::create($data);
+        return new CityResource($city);
     }
 
     /**
@@ -31,7 +33,8 @@ class CityController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $city = City::findOrFail($id);
+        return new CityResource($city);
     }
 
     /**
@@ -39,7 +42,10 @@ class CityController extends Controller
      */
     public function update(UpdateCityRequest $request, string $id)
     {
-        //
+        $city = City::findOrFail($id);
+        $data = $request->validated();
+        $city->update($data);
+        return new CityResource($city);
     }
 
     /**
@@ -47,6 +53,8 @@ class CityController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $city = City::findOrFail($id);
+        $city->delete();
+        return response()->noContent();
     }
 }

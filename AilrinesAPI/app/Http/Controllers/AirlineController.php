@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AirlineRequest;
 use App\Http\Requests\StoreAirlineRequest;
 use App\Http\Requests\UpdateAirlineRequest;
 use App\Http\Resources\AirlineResource;
@@ -23,7 +24,9 @@ class AirlineController extends Controller
      */
     public function store(StoreAirlineRequest $request)
     {
-        //
+        $data = $request->validated();
+        $airline = Airline::create($data);
+        return new AirlineRequest($airline);
     }
 
     /**
@@ -31,7 +34,8 @@ class AirlineController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $airline = Airline::findOrFail($id);
+        return new AirlineResource($airline);
     }
 
     /**
@@ -39,7 +43,10 @@ class AirlineController extends Controller
      */
     public function update(UpdateAirlineRequest $request, string $id)
     {
-        //
+        $airline = Airline::findOrFail($id);
+        $data = $request->validated();
+        $airline->update($data);
+        return new AirlineResource($airline);
     }
 
     /**
@@ -47,6 +54,8 @@ class AirlineController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $airline = Airline::findOrFail($id);
+        $airline->delete();
+        return response()->noContent();
     }
 }
