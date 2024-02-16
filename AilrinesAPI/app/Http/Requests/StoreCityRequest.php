@@ -19,12 +19,11 @@ class StoreCityRequest extends CityRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    /*
+
     public function rules(): array
     {
-        return [
-            //
+        return parent::rules() + [
+            
         ];
     }
-    */
 }
