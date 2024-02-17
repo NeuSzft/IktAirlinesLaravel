@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Flight extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
 
     protected $fillable = [
         'id',
@@ -27,13 +30,18 @@ class Flight extends Model
         'huf_per_km' => 'integer',
     ];
 
-    public function cities(): HasMany
+    public function airline(): BelongsTo
     {
-        return $this->hasMany(City::class);
+        return $this->belongsTo(Airline::class, 'airline_id');
     }
 
-    public function airline(): HasOne
+    public function originCity(): BelongsTo
     {
-        return $this->hasOne(Airline::class);
+        return $this->belongsTo(City::class, 'origin_id');
+    }
+
+    public function destinationCity(): BelongsTo
+    {
+        return $this->belongsTo(City::class, 'destination_id');
     }
 }
