@@ -14,7 +14,7 @@ class FlightController extends Controller
      */
     public function index()
     {
-        $flights = Flight::get();
+        $flights = Flight::with(['airline', 'originCity', 'destinationCity'])->get();
         return FlightResource::collection($flights);
     }
 
