@@ -16,9 +16,9 @@ class FlightResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'airline_id' => $this->airline_id,
-            'origin_id' => $this->origin_id,
-            'destination_id' => $this->destination_id,
+            'airline' => new AirlineResource($this->whenLoaded('airline')),
+            'origin' => new CityResource($this->whenLoaded('originCity')),
+            'destination' => new CityResource($this->whenLoaded('destinationCity')),
             'distance' => $this->distance,
             'flight_time' => $this->flight_time,
             'huf_per_km' => $this->huf_per_km,
