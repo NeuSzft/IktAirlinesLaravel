@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AirlineRequest;
 use App\Http\Requests\StoreAirlineRequest;
 use App\Http\Requests\UpdateAirlineRequest;
 use App\Http\Resources\AirlineResource;
@@ -26,7 +25,7 @@ class AirlineController extends Controller
     {
         $data = $request->validated();
         $airline = Airline::create($data);
-        return new AirlineRequest($airline);
+        return new AirlineResource($airline);
     }
 
     /**
