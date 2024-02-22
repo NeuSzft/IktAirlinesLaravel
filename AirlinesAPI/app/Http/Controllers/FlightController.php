@@ -31,7 +31,8 @@ class FlightController extends Controller
      */
     public function show(int $id)
     {
-        //$flight = Flight::with();
+        $flight = Flight::with(['airline', 'originCity', 'destinationCity'])->findOrFail($id);
+        return new FlightResource($flight);
     }
 
     /**

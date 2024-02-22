@@ -81,11 +81,11 @@ export default {
     },
     data() {
         return {
-            flights: new Array(),
-            countriesOrigin: new Set(),
-            countriesDestination: new Set(),
-            origin: ref(''),
-            destination: ref(''),
+            flights: [],
+            countriesOrigin: [],
+            countriesDestination: [],
+            origin: '',
+            destination: '',
             adultsCount: ref(0),
             childrenCount: ref(0),
             passengerCount: ref(0),
@@ -133,11 +133,11 @@ export default {
             const routes = new Array()
 
             for (const flight of this.flights) {
-                if (flight.origin_city === this.origin) {
-                    destinations.push(flight.destination_city)
+                if (flight.origin.name === this.origin) {
+                    destinations.push(flight.destination.name)
                     routes.push({
-                        origin: flight.origin_city,
-                        final: flight.destination_city,
+                        origin: flight.origin.name,
+                        final: flight.destination.name,
                         flightIds: [flight.id],
                         distances: [flight.distance],
                         flightTimes: [flight.flight_time]
@@ -146,25 +146,25 @@ export default {
             }
 
             for (const flight1 of this.flights) {
-                if (flight1.origin_city === this.origin) {
+                if (flight1.origin.name === this.origin) {
                     for (const flight2 of this.flights) {
-                        if (flight1.destination_city === flight2.origin_city) {
+                        if (flight1.destination.name === flight2.origin.name) {
 
-                            destinations.push(flight2.destination_city)
+                            destinations.push(flight2.destination.name)
                             routes.push({
-                                origin: flight1.origin_city,
-                                final: flight2.destination_city,
+                                origin: flight1.origin.name,
+                                final: flight2.destination.name,
                                 flightIds: [flight1.id, flight2.id],
                                 distances: [flight1.distance, flight2.distance],
                                 flightTimes: [flight1.flight_time, flight2.flight_time]
                             })
 
                             for (const flight3 of this.flights) {
-                                if (flight2.destination_city === flight3.origin_city) {
-                                    destinations.push(flight3.destination_city)
+                                if (flight2.destination.name === flight3.origin.name) {
+                                    destinations.push(flight3.destination.name)
                                     routes.push({
-                                        origin: flight1.origin_city,
-                                        final: flight3.destination_city,
+                                        origin: flight1.origin.name,
+                                        final: flight3.destination.name,
                                         flightIds: [flight1.id, flight2.id, flight3.id],
                                         distances: [flight1.distance, flight2.distance, flight3.distance],
                                         flightTimes: [flight1.flight_time, flight2.flight_time, flight3.flight_time]
@@ -176,11 +176,12 @@ export default {
                 }
             }
 
-            this.countriesDestination = new Set([...destinations].sort())
-            this.routes = routes
-            if (this.destination !== null) {
-                this.routes = routes.filter(route => route.final === this.destination)
-            }
+
+            const uniqueDestinations = [...new Set(destinations)].sort()
+            this.countriesDestination = uniqueDestinations
+
+
+            this.routes = this.destination ? routes.filter(route => route.final === this.destination) : routes
         },
         calculateCost(flights) {
             let totalCost = 0
@@ -192,7 +193,7 @@ export default {
                 let totalBaseCostAdult = baseCostPerPassenger * this.adultsCount
                 let totalBaseCostChild = baseCostPerPassenger * this.childrenCount
 
-                let destinationPop = flight.destination_city_population
+                let destinationPop = flight.destination.population
                 let tourismTaxRate = destinationPop < 2000000 ? 0.05 : destinationPop < 10000000 ? 0.075 : 0.10
 
                 let vatAdult = totalBaseCostAdult * 0.27
@@ -215,24 +216,25 @@ export default {
             return (this.adultsCount + this.childrenCount > 0) ? Math.round(totalCost) : 0
         },
         getFlights() {
-            http.get("/flights/joined")
+            http.get("/flights")
                 .then(response => {
-                    this.flights = response.data
-                    const countriesOrigin = []
-                    const countriesDestination = []
+                    const data = response.data
 
-                    for (const flight of response.data) {
-                        countriesOrigin.push(flight.origin_city)
-                        countriesDestination.push(flight.destination_city)
+                    const countriesOrigin = new Set()
+                    const countriesDestination = new Set()
+
+                    for (const flight of data.data) {
+                        this.flights.push(flight)
+                        countriesOrigin.add(flight.origin.name)
+                        countriesDestination.add(flight.destination.name)
                     }
 
-                    this.countriesOrigin = new Set([...countriesOrigin].sort())
-                    this.countriesDestination = new Set([...countriesDestination].sort())
+                    this.countriesOrigin = [...countriesOrigin].sort()
+                    this.countriesDestination = [...countriesDestination].sort()
                 })
         },
         buyTicket(value) {
             const route = toRaw(value)
-
             let savedRoutes = JSON.parse(localStorage.getItem('savedRoutes')) || []
 
             savedRoutes.push({

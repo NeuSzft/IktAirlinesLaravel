@@ -20,7 +20,7 @@
 <script>
 import PageLayout from '@layouts/PageLayout.vue'
 import Review from '@components/Review.vue'
-import BackgroundImage from '@images/clouds.jpg'
+import BackgroundImage from '@assets/images/clouds.jpg'
 
 export default {
     components: {
