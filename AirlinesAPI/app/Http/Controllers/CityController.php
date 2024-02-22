@@ -31,7 +31,7 @@ class CityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $id)
     {
         $city = City::findOrFail($id);
         return new CityResource($city);
@@ -40,7 +40,7 @@ class CityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCityRequest $request, string $id)
+    public function update(UpdateCityRequest $request, int $id)
     {
         $city = City::findOrFail($id);
         $data = $request->validated();
@@ -51,7 +51,7 @@ class CityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
         $city = City::findOrFail($id);
         $city->delete();

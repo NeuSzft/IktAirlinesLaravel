@@ -31,7 +31,7 @@ class AirlineController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $id)
     {
         $airline = Airline::findOrFail($id);
         return new AirlineResource($airline);
@@ -40,7 +40,7 @@ class AirlineController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAirlineRequest $request, string $id)
+    public function update(UpdateAirlineRequest $request, int $id)
     {
         $airline = Airline::findOrFail($id);
         $data = $request->validated();
@@ -51,7 +51,7 @@ class AirlineController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
         $airline = Airline::findOrFail($id);
         $airline->delete();
