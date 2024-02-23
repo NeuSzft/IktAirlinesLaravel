@@ -23,7 +23,10 @@ class FlightController extends Controller
      */
     public function store(StoreFlightRequest $request)
     {
-        //
+        $data = $request->validated();
+        $newFlight = Flight::create($data);
+        $flight = Flight::with(['airline', 'originCity', 'destinationCity'])->findOrFail($newFlight->id);
+        return new FlightResource($flight);
     }
 
     /**
@@ -40,7 +43,10 @@ class FlightController extends Controller
      */
     public function update(UpdateFlightRequest $request, string $id)
     {
-        //
+        $flight = Flight::with(['airline', 'originCity', 'destinationCity'])->findOrFail($id);
+        $data = $request->validated($request);
+        $flight->update($data);
+        return new FlightResource($flight);
     }
 
     /**
@@ -48,6 +54,8 @@ class FlightController extends Controller
      */
     public function destroy(int $id)
     {
-        //
+        $flight = Flight::with(['airline', 'originCity', 'destinationCity'])->findOrFail($id);
+        $flight->delete();
+        return response()->noContent();
     }
 }
