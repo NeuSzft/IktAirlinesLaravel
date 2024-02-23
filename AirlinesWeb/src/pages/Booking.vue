@@ -1,15 +1,6 @@
 <template>
     <PageLayout>
-        <div v-if="isPurchased"
-            class="alert alert-success position-fixed z-1 translate-middle top-25 start-50 w-75 fs-5 text-center"
-            role="alert">
-            <i class="bi bi-check-circle"></i>
-            <span>
-                Flight for <router-link :to="ticketLink" aria-current="page" class="alert-link d-inline fw-bold">{{ origin
-                }} →
-                    {{ destination }}</router-link> has been booked!
-            </span>
-        </div>
+        <SuccessAlert v-if="isPurchased" :origin="origin" :destination="destination" :ticketLink="ticketLink" />
 
         <div id="booking" class="container mt-5">
             <h1 class="text-center mb-4">Flight Booking</h1>
@@ -72,8 +63,10 @@
 <script>
 import { ref, toRaw } from 'vue'
 import { http } from "@utils/http"
-import Ticket from "@components/Ticket.vue"
 import PageLayout from '@layouts/PageLayout.vue'
+import SuccessAlert from '@components/SuccessAlert.vue'
+import Ticket from "@components/Ticket.vue"
+
 
 export default {
     mounted() {
@@ -257,7 +250,8 @@ export default {
     },
     components: {
         Ticket,
-        PageLayout
+        PageLayout,
+        SuccessAlert
     }
 }
 </script>
