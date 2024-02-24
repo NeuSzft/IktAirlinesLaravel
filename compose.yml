@@ -11,7 +11,7 @@ services:
             - ./AirlinesWeb:/src:ro
             - vue-app:/app
         networks:
-            - net
+            - vue-net
         working_dir: /app/src
         environment:
             OUTPUT_DIR: /app
@@ -23,18 +23,21 @@ services:
         volumes:
             - vue-app:/www
         networks:
-            - net
+            - vue-net
         ports:
             - "8080:80"
         depends_on:
-            - vue-build
-            - web
-            - phpmyadmin
+            vue-build:
+                condition: service_completed_successfully
+            web:
+                condition: service_started
+            phpmyadmin:
+                condition: service_started
 
 volumes:
     vue-app:
         name: airlines-vue-app
 
 networks:
-    net:
-        name: airlines-network
+    vue-net:
+        name: airlines-vue-network
