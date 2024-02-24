@@ -1,7 +1,7 @@
 <template>
     <PageLayout>
         <div id="summary" class="container my-5">
-            <h1 class="text-center mb-5">Booked flights <i class="bi bi-basket2-fill"></i></h1>
+            <h1 class="text-center mb-5">Booked flights</h1>
             <div id="tickets" v-if="tickets.length > 0">
                 <div class="row my-4 card" v-for="(ticket, index) in tickets" :key="index" :id="`ticket-${index}`">
                     <div class="card py-3">
