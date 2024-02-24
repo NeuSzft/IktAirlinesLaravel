@@ -1,0 +1,40 @@
+version: '3.8'
+
+include:
+    - ./AirlinesAPI/docker-compose.yml
+
+services:
+    vue-build:
+        container_name: airlines-vue-build
+        image: node:alpine
+        volumes:
+            - ./AirlinesWeb:/src:ro
+            - vue-app:/app
+        networks:
+            - net
+        working_dir: /app/src
+        environment:
+            OUTPUT_DIR: /app
+        command: sh -c "cp -frv /src/* /app/src && npm install && npm run build"
+
+    vue:
+        container_name: airlines-vue
+        image: toarexer/spaserver
+        volumes:
+            - vue-app:/www
+        networks:
+            - net
+        ports:
+            - "8080:80"
+        depends_on:
+            - vue-build
+            - web
+            - phpmyadmin
+
+volumes:
+    vue-app:
+        name: airlines-vue-app
+
+networks:
+    net:
+        name: airlines-network

@@ -21,5 +21,8 @@ export default defineConfig({
             '@utils': fileURLToPath(new URL('./src/utils', import.meta.url)),
             '~bootstrap': fileURLToPath(new URL('./node_modules/bootstrap', import.meta.url)),
         }
+    },
+    build: {
+        outDir: process.env.OUTPUT_DIR
     }
 })
