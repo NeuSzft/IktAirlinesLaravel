@@ -1,0 +1,29 @@
+version: '3.8'
+
+include:
+    - ./AirlinesAPI/docker-compose.yml
+
+services:
+    api-tests:
+        container_name: airlines-api-tests
+        image: mcr.microsoft.com/dotnet/sdk:8.0
+        volumes:
+            - ./AirlinesAPI.Models:/src/AirlinesAPI.Models:ro
+            - ./AirlinesAPI.Tests:/src/AirlinesAPI.Tests:ro
+            - ./api-tests:/test
+            - ./TestResults:/tr
+        networks:
+            - backend
+        working_dir: /test/AirlinesAPI.Tests
+        environment:
+            API_ADDRESS: web
+        entrypoint: sh -c "cp -afr /src/. /test && dotnet test -l \"console;verbosity=detailed\" > /tr/api-tests.txt; chown -R $HOST_UID:$HOST_GID /tr"
+        depends_on:
+            web:
+                condition: service_started
+            db:
+                condition: service_started
+
+volumes:
+    api-tests:
+        name: airlines-api-tests

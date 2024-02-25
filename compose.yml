@@ -15,7 +15,7 @@ services:
         working_dir: /app/src
         environment:
             OUTPUT_DIR: /app
-        command: sh -c "cp -frv /src/* /app/src && npm install && npm run build"
+        entrypoint: sh -c "cp -afr /src/. /app/src && npm install && npm run build"
 
     vue:
         container_name: airlines-vue
