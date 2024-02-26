@@ -1,29 +1,66 @@
 version: '3.8'
 
-include:
-    - ./AirlinesAPI/docker-compose.yml
-
 services:
+    test-web:
+        container_name: airlines-test-web
+        image: nginx:1.25-alpine3.17
+        volumes:
+            - ./AirlinesAPI:/www:ro
+            - ./AirlinesAPI/docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+            - ./AirlinesAPI/docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
+        depends_on:
+            - test-app
+        networks:
+            - test-net
+
+    test-app:
+        container_name: app
+        extends:
+            file: ./AirlinesAPI/docker-compose.yml
+            service: app
+        networks:
+            - test-net
+        environment:
+            TESTING: true
+        volumes:
+            - test-db:/var/lib/mysql
+
+    test-db:
+        container_name: airlines-test-db
+        extends:
+            file: ./AirlinesAPI/docker-compose.yml
+            service: db
+        networks:
+            - test-net
+
     api-tests:
         container_name: airlines-api-tests
         image: mcr.microsoft.com/dotnet/sdk:8.0
         volumes:
             - ./AirlinesAPI.Models:/src/AirlinesAPI.Models:ro
             - ./AirlinesAPI.Tests:/src/AirlinesAPI.Tests:ro
-            - ./api-tests:/test
             - ./TestResults:/tr
+            - api-tests:/test
         networks:
-            - backend
+            - test-net
         working_dir: /test/AirlinesAPI.Tests
         environment:
-            API_ADDRESS: web
-        entrypoint: sh -c "cp -afr /src/. /test && dotnet test -l \"console;verbosity=detailed\" > /tr/api-tests.txt; chown -R $HOST_UID:$HOST_GID /tr"
+            API_ADDRESS: airlines-test-web
+        entrypoint: sh -c "cp -afr /src/. /test && dotnet test -l \"liquid.md;logfilename=/tr/api-tests.md\"; chown -R $HOST_UID:$HOST_GID /tr"
         depends_on:
-            web:
+            test-web:
                 condition: service_started
-            db:
+            test-db:
                 condition: service_started
 
 volumes:
+    test-db:
+        name: airlines-test-db
+
     api-tests:
         name: airlines-api-tests
+
+networks:
+    test-net:
+        name: airlines-test-network
+    backend:
