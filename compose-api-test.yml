@@ -23,13 +23,18 @@ services:
         environment:
             TESTING: true
         volumes:
-            - test-db:/var/lib/mysql
+            - ./TestData:/www/database/seeders
 
     test-db:
-        container_name: airlines-test-db
-        extends:
-            file: ./AirlinesAPI/docker-compose.yml
-            service: db
+        container_name: db
+        image: mysql:8.0.30
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+            - MYSQL_USER=${DB_USERNAME}
+            - MYSQL_PASSWORD=${DB_PASSWORD}
+            - MYSQL_DATABASE=${DB_DATABASE}
+            - TZ="${TZ}"
         networks:
             - test-net
 
@@ -46,7 +51,7 @@ services:
         working_dir: /test/AirlinesAPI.Tests
         environment:
             API_ADDRESS: airlines-test-web
-        entrypoint: sh -c "cp -afr /src/. /test && dotnet test -l \"liquid.md;logfilename=/tr/api-tests.md\"; chown -R $HOST_UID:$HOST_GID /tr"
+        entrypoint: sh -c "cp -aru /src/. /test && dotnet test -l \"liquid.md;logfilename=/tr/api-tests.md\"; chown -R $HOST_UID:$HOST_GID /tr"
         depends_on:
             test-web:
                 condition: service_started
@@ -54,9 +59,6 @@ services:
                 condition: service_started
 
 volumes:
-    test-db:
-        name: airlines-test-db
-
     api-tests:
         name: airlines-api-tests
 
