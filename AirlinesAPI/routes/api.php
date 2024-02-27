@@ -3,6 +3,7 @@
 use App\Http\Controllers\AirlineController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\FlightController;
+use App\Http\Controllers\TestingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,3 +39,7 @@ Route::get('/flights', [FlightController::class, 'index'])->name('flights.index'
 Route::get('/flights/{id}', [FlightController::class, 'show'])->whereNumber('id')->name('flights.show');
 Route::put('/flights/{id}', [FlightController::class, 'update'])->whereNumber('id')->name('flights.update');
 Route::delete('/flights/{id}', [FlightController::class, 'destroy'])->whereNumber('id')->name('flights.destroy');
+
+if (getenv('TESTING')) {
+    Route::get('/testing/migrate-fresh', [TestingController::class, 'migrateFresh'])->name('testing.migrate-fresh');
+}
