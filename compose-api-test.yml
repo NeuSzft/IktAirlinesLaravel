@@ -15,15 +15,17 @@ services:
 
     test-app:
         container_name: app
-        extends:
-            file: ./AirlinesAPI/docker-compose.yml
-            service: app
+        image: rcsnjszg/backend2023
+        build:
+            context: ./AirlinesAPI/docker/php
+            dockerfile: ./AirlinesAPI/Dockerfile
+        volumes:
+            - ./AirlinesAPI/:/www:rw
+            - ./TestData:/www/database/seeders
         networks:
             - test-net
         environment:
             TESTING: true
-        volumes:
-            - ./TestData:/www/database/seeders
 
     test-db:
         container_name: db
@@ -65,4 +67,3 @@ volumes:
 networks:
     test-net:
         name: airlines-test-network
-    backend:
