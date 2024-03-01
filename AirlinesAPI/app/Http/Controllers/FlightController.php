@@ -26,7 +26,7 @@ class FlightController extends Controller
         $data = $request->validated();
         $newFlight = Flight::create($data);
         $flight = Flight::with(['airline', 'originCity', 'destinationCity'])->findOrFail($newFlight->id);
-        return new FlightResource($flight);
+        return response(new FlightResource($flight), 201);
     }
 
     /**

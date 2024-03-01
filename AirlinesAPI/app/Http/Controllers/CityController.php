@@ -25,7 +25,7 @@ class CityController extends Controller
     {
         $data = $request->validated();
         $city = City::create($data);
-        return new CityResource($city);
+        return response(new CityResource($city), 201);
     }
 
     /**
@@ -54,7 +54,11 @@ class CityController extends Controller
     public function destroy(int $id)
     {
         $city = City::findOrFail($id);
-        $city->delete();
-        return response()->noContent();
+        try {
+            $city->delete();
+            return response()->noContent();
+        } catch (\Throwable) {
+            return response('', 405);
+        }
     }
 }

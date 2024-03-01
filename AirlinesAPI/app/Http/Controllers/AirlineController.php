@@ -25,7 +25,7 @@ class AirlineController extends Controller
     {
         $data = $request->validated();
         $airline = Airline::create($data);
-        return new AirlineResource($airline);
+        return response(new AirlineResource($airline), 201);
     }
 
     /**
@@ -54,7 +54,11 @@ class AirlineController extends Controller
     public function destroy(int $id)
     {
         $airline = Airline::findOrFail($id);
-        $airline->delete();
-        return response()->noContent();
+        try {
+            $airline->delete();
+            return response()->noContent();
+        } catch (\Throwable) {
+            return response('', 405);
+        }
     }
 }
