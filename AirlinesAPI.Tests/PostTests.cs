@@ -52,9 +52,9 @@ public class PostTests {
     [DataRow(100), DataRow(200), DataRow(300)]
     public async Task PostInvalidFlight(int airlineId) {
         Flight flight = new() {
-            AirlineId     = airlineId / 100,
-            OriginId      = airlineId / 100 * 2 - 1,
-            DestinationId = airlineId / 100 * 2,
+            AirlineId     = airlineId,
+            OriginId      = airlineId * 2 - 1,
+            DestinationId = airlineId * 2,
             Distance      = airlineId * 300,
             FlightTime    = airlineId * 30,
             HufPerKm      = airlineId * 3
