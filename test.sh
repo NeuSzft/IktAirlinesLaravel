@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ARGS='-f compose-api-test.yml --env-file ./AirlinesAPI/.env'
+ARGS='-f compose-api-test.yml --env-file ./docker/conf/.env'
 
 export HOST_UID=$(id -u)
 export HOST_GID=$(id -g)
