@@ -1,3 +1,5 @@
+/.editorconfig
+
 bin
 obj
 
@@ -6,5 +8,7 @@ obj
 .vscode
 
 *.user
+
+.env
 
 TestResults
