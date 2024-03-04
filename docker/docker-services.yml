@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+    app:
+        image: rcsnjszg/backend2023
+        build:
+            context: ../AirlinesAPI
+            dockerfile_inline: |
+                FROM php:8.2-fpm-alpine3.17
+                RUN adduser -u 1000 -s /bin/fish -D phpdocker
+                WORKDIR /www
+                COPY --from=composer /usr/bin/composer /usr/bin/composer
+                RUN apk update
+                RUN apk add --no-cache libpng-dev zip libzip-dev jpegoptim optipng pngquant gifsicle unzip curl oniguruma-dev libxml2-dev vim fish
+                RUN docker-php-ext-configure pdo
+                RUN docker-php-ext-configure pdo_mysql
+                RUN docker-php-ext-configure zip
+                RUN docker-php-ext-configure exif
+                RUN docker-php-ext-configure pcntl
+                RUN docker-php-ext-configure gd
+                RUN docker-php-ext-install  pdo pdo_mysql zip exif pcntl gd
+                USER phpdocker
+                CMD ["php-fpm"]
+
+    web:
+        image: nginx:1.25-alpine3.17
+
+    db:
+        image: mysql:8.0.30
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_DATABASE: ${DB_DATABASE}
+            TZ: "${TZ}"
+
+    phpmyadmin:
+        image: phpmyadmin:5.1-apache
+        environment:
+            PMA_HOST: ${DB_HOST}
+            PMA_PORT: ${DB_PORT}
+            MA_USER: ${DB_USERNAME}
+            PMA_PASSWORD: ${DB_PASSWORD}
+
+    vue-build:
+        image: node:alpine
+        volumes:
+        working_dir: /app/src
+        environment:
+            OUTPUT_DIR: /app
+        entrypoint: sh -c "cp -aru /src/. /app/src && npm install && npm run build && ln -fs src/.htaccess /app/.htaccess"
+
+    vue:
+        build:
+            context: .
+            dockerfile_inline: |
+                FROM httpd
+                RUN mkdir -p /usr/local/apache2/conf
+                RUN echo ''                                                 >> /usr/local/apache2/conf/httpd.conf
+                RUN echo 'LoadModule rewrite_module modules/mod_rewrite.so' >> /usr/local/apache2/conf/httpd.conf
+                RUN echo '<Directory "/usr/local/apache2/htdocs">'          >> /usr/local/apache2/conf/httpd.conf
+                RUN echo '    AllowOverride All'                            >> /usr/local/apache2/conf/httpd.conf
+                RUN echo '</Directory>'                                     >> /usr/local/apache2/conf/httpd.conf
