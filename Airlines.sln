@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirlinesAPI.Models", "Airli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirlinesAPI.Tests", "AirlinesAPI.Tests\AirlinesAPI.Tests.csproj", "{4660A4F4-84A0-40A9-BF6E-EECBBBCF10D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirlinesApp", "AirlinesApp\AirlinesApp.csproj", "{92697A7A-65C1-4FA9-AB77-9EE2C8A36A64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{4660A4F4-84A0-40A9-BF6E-EECBBBCF10D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4660A4F4-84A0-40A9-BF6E-EECBBBCF10D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4660A4F4-84A0-40A9-BF6E-EECBBBCF10D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92697A7A-65C1-4FA9-AB77-9EE2C8A36A64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92697A7A-65C1-4FA9-AB77-9EE2C8A36A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92697A7A-65C1-4FA9-AB77-9EE2C8A36A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92697A7A-65C1-4FA9-AB77-9EE2C8A36A64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
