@@ -29,7 +29,8 @@ services:
         networks:
             - internal-net
         volumes:
-            - ./AirlinesAPI/:/www:rw
+            - ./AirlinesAPI/:/www
+            - ./docker/conf/.env:/www/.env
 
     web:
         extends:
