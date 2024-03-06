@@ -3,6 +3,7 @@
 use App\Http\Controllers\AirlineController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\FlightController;
+use App\Http\Controllers\NextIdController;
 use App\Http\Controllers\TestingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,12 @@ Route::get('/flights', [FlightController::class, 'index'])->name('flights.index'
 Route::get('/flights/{id}', [FlightController::class, 'show'])->whereNumber('id')->name('flights.show');
 Route::put('/flights/{id}', [FlightController::class, 'update'])->whereNumber('id')->name('flights.update');
 Route::delete('/flights/{id}', [FlightController::class, 'destroy'])->whereNumber('id')->name('flights.destroy');
+
+Route::get('/ping', fn () => 'Pong')->name('ping');
+
+Route::get('/next-id/airlines', [NextIdController::class, 'airlines'])->name('next-id.airlines');
+Route::get('/next-id/cities', [NextIdController::class, 'cities'])->name('next-id.cities');
+Route::get('/next-id/flights', [NextIdController::class, 'flights'])->name('next-id.flights');
 
 if (getenv('TESTING')) {
     Route::get('/testing/migrate-fresh', [TestingController::class, 'migrateFresh'])->name('testing.migrate-fresh');
