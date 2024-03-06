@@ -45,7 +45,6 @@ services:
 
     vue-build:
         image: node:alpine
-        volumes:
         working_dir: /app/src
         environment:
             OUTPUT_DIR: /app
