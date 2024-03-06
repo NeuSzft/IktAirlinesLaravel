@@ -57,8 +57,8 @@ class CityController extends Controller
         try {
             $city->delete();
             return response()->noContent();
-        } catch (\Throwable) {
-            return response('', 405);
+        } catch (\Throwable $e) {
+            return response($e->getMessage(), 405);
         }
     }
 }
