@@ -17,7 +17,7 @@
             <p class="mb-1">Price: Free</p>
         </div>
     </div>
-    <div v-else class="d-flex justify-content-center w-100">
+    <div v-else class="d-flex justify-content-center w-100 mt-3">
         <div class="spinner-border" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
