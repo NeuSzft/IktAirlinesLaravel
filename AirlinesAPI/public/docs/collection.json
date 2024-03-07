@@ -1,0 +1,898 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost:5000"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "ca34e135-3d90-4c44-9fc9-db47f2e89efd",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "GET api\/user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/user",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/user"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/airlines",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/airlines"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"yxw\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/airlines",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/airlines"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":1,\"name\":\"Delta Air Lines\"},{\"id\":2,\"name\":\"American Airlines\"},{\"id\":3,\"name\":\"United Airlines\"},{\"id\":4,\"name\":\"Emirates\"},{\"id\":5,\"name\":\"Southwest Airlines\"},{\"id\":6,\"name\":\"China Southern Airlines\"},{\"id\":7,\"name\":\"China Eastern Airlines\"},{\"id\":8,\"name\":\"Air China\"},{\"id\":9,\"name\":\"Air Canada\"},{\"id\":10,\"name\":\"Qatar Airways\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the specified resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/airlines\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/airlines\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the airline."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"id\":1,\"name\":\"Delta Air Lines\"}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/airlines\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/airlines\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the airline."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"njd\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/airlines\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/airlines\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the airline."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/cities",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/cities"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"gotk\",\"population\":17}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/cities",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/cities"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":1,\"name\":\"Tokyo\",\"population\":13960000},{\"id\":2,\"name\":\"New York\",\"population\":8419000},{\"id\":3,\"name\":\"Paris\",\"population\":2148000},{\"id\":4,\"name\":\"Moscow\",\"population\":11920000},{\"id\":5,\"name\":\"Beijing\",\"population\":21540000},{\"id\":6,\"name\":\"Sydney\",\"population\":5312000},{\"id\":7,\"name\":\"Rio de Janeiro\",\"population\":6748000},{\"id\":8,\"name\":\"Cairo\",\"population\":10200000},{\"id\":9,\"name\":\"Mumbai\",\"population\":20411000},{\"id\":10,\"name\":\"Los Angeles\",\"population\":3971000},{\"id\":11,\"name\":\"Shanghai\",\"population\":26320000},{\"id\":12,\"name\":\"Istanbul\",\"population\":15460000},{\"id\":13,\"name\":\"Karachi\",\"population\":16000000},{\"id\":14,\"name\":\"Seoul\",\"population\":9776000},{\"id\":15,\"name\":\"Lagos\",\"population\":14000000},{\"id\":16,\"name\":\"Jakarta\",\"population\":10750000},{\"id\":17,\"name\":\"S\\u00e3o Paulo\",\"population\":12300000},{\"id\":18,\"name\":\"Mexico City\",\"population\":9200000},{\"id\":19,\"name\":\"Delhi\",\"population\":19000000},{\"id\":20,\"name\":\"Manila\",\"population\":13900000},{\"id\":21,\"name\":\"Toronto\",\"population\":2930000},{\"id\":22,\"name\":\"Berlin\",\"population\":3645000},{\"id\":23,\"name\":\"Madrid\",\"population\":3265000},{\"id\":24,\"name\":\"Bangkok\",\"population\":10560000},{\"id\":25,\"name\":\"Tehran\",\"population\":8840000},{\"id\":26,\"name\":\"Johannesburg\",\"population\":9570000},{\"id\":27,\"name\":\"Buenos Aires\",\"population\":15100000},{\"id\":28,\"name\":\"Taipei\",\"population\":7870000},{\"id\":29,\"name\":\"Lima\",\"population\":10750000},{\"id\":30,\"name\":\"Budapest\",\"population\":1700000}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the specified resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/cities\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/cities\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the city."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"id\":1,\"name\":\"Tokyo\",\"population\":13960000}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/cities\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/cities\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the city."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"xac\",\"population\":6}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/cities\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/cities\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the city."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/flights",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/flights"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"airline_id\":10,\"origin_id\":8,\"destination_id\":5,\"distance\":7,\"flight_time\":1,\"huf_per_km\":5}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/flights",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/flights"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":1,\"airline\":{\"id\":4,\"name\":\"Emirates\"},\"origin\":{\"id\":1,\"name\":\"Tokyo\",\"population\":13960000},\"destination\":{\"id\":5,\"name\":\"Beijing\",\"population\":21540000},\"distance\":2100,\"flight_time\":300,\"huf_per_km\":40},{\"id\":2,\"airline\":{\"id\":1,\"name\":\"Delta Air Lines\"},\"origin\":{\"id\":2,\"name\":\"New York\",\"population\":8419000},\"destination\":{\"id\":10,\"name\":\"Los Angeles\",\"population\":3971000},\"distance\":450,\"flight_time\":540,\"huf_per_km\":50},{\"id\":3,\"airline\":{\"id\":2,\"name\":\"American Airlines\"},\"origin\":{\"id\":2,\"name\":\"New York\",\"population\":8419000},\"destination\":{\"id\":1,\"name\":\"Tokyo\",\"population\":13960000},\"distance\":1080,\"flight_time\":650,\"huf_per_km\":60},{\"id\":4,\"airline\":{\"id\":3,\"name\":\"United Airlines\"},\"origin\":{\"id\":2,\"name\":\"New York\",\"population\":8419000},\"destination\":{\"id\":3,\"name\":\"Paris\",\"population\":2148000},\"distance\":5800,\"flight_time\":420,\"huf_per_km\":70},{\"id\":5,\"airline\":{\"id\":5,\"name\":\"Southwest Airlines\"},\"origin\":{\"id\":10,\"name\":\"Los Angeles\",\"population\":3971000},\"destination\":{\"id\":2,\"name\":\"New York\",\"population\":8419000},\"distance\":4500,\"flight_time\":540,\"huf_per_km\":80},{\"id\":6,\"airline\":{\"id\":7,\"name\":\"China Eastern Airlines\"},\"origin\":{\"id\":3,\"name\":\"Paris\",\"population\":2148000},\"destination\":{\"id\":4,\"name\":\"Moscow\",\"population\":11920000},\"distance\":2800,\"flight_time\":320,\"huf_per_km\":45},{\"id\":7,\"airline\":{\"id\":6,\"name\":\"China Southern Airlines\"},\"origin\":{\"id\":5,\"name\":\"Beijing\",\"population\":21540000},\"destination\":{\"id\":11,\"name\":\"Shanghai\",\"population\":26320000},\"distance\":1800,\"flight_time\":240,\"huf_per_km\":55},{\"id\":8,\"airline\":{\"id\":8,\"name\":\"Air China\"},\"origin\":{\"id\":4,\"name\":\"Moscow\",\"population\":11920000},\"destination\":{\"id\":6,\"name\":\"Sydney\",\"population\":5312000},\"distance\":9000,\"flight_time\":660,\"huf_per_km\":55},{\"id\":9,\"airline\":{\"id\":1,\"name\":\"Delta Air Lines\"},\"origin\":{\"id\":7,\"name\":\"Rio de Janeiro\",\"population\":6748000},\"destination\":{\"id\":8,\"name\":\"Cairo\",\"population\":10200000},\"distance\":11000,\"flight_time\":780,\"huf_per_km\":50},{\"id\":10,\"airline\":{\"id\":2,\"name\":\"American Airlines\"},\"origin\":{\"id\":9,\"name\":\"Mumbai\",\"population\":20411000},\"destination\":{\"id\":10,\"name\":\"Los Angeles\",\"population\":3971000},\"distance\":14000,\"flight_time\":840,\"huf_per_km\":60},{\"id\":11,\"airline\":{\"id\":3,\"name\":\"United Airlines\"},\"origin\":{\"id\":11,\"name\":\"Shanghai\",\"population\":26320000},\"destination\":{\"id\":12,\"name\":\"Istanbul\",\"population\":15460000},\"distance\":2200,\"flight_time\":300,\"huf_per_km\":70},{\"id\":12,\"airline\":{\"id\":4,\"name\":\"Emirates\"},\"origin\":{\"id\":13,\"name\":\"Karachi\",\"population\":16000000},\"destination\":{\"id\":14,\"name\":\"Seoul\",\"population\":9776000},\"distance\":2000,\"flight_time\":280,\"huf_per_km\":40},{\"id\":13,\"airline\":{\"id\":5,\"name\":\"Southwest Airlines\"},\"origin\":{\"id\":15,\"name\":\"Lagos\",\"population\":14000000},\"destination\":{\"id\":16,\"name\":\"Jakarta\",\"population\":10750000},\"distance\":12000,\"flight_time\":720,\"huf_per_km\":80},{\"id\":14,\"airline\":{\"id\":6,\"name\":\"China Southern Airlines\"},\"origin\":{\"id\":17,\"name\":\"S\\u00e3o Paulo\",\"population\":12300000},\"destination\":{\"id\":18,\"name\":\"Mexico City\",\"population\":9200000},\"distance\":900,\"flight_time\":660,\"huf_per_km\":55},{\"id\":15,\"airline\":{\"id\":7,\"name\":\"China Eastern Airlines\"},\"origin\":{\"id\":19,\"name\":\"Delhi\",\"population\":19000000},\"destination\":{\"id\":20,\"name\":\"Manila\",\"population\":13900000},\"distance\":500,\"flight_time\":360,\"huf_per_km\":45},{\"id\":16,\"airline\":{\"id\":10,\"name\":\"Qatar Airways\"},\"origin\":{\"id\":21,\"name\":\"Toronto\",\"population\":2930000},\"destination\":{\"id\":22,\"name\":\"Berlin\",\"population\":3645000},\"distance\":6500,\"flight_time\":600,\"huf_per_km\":55},{\"id\":17,\"airline\":{\"id\":2,\"name\":\"American Airlines\"},\"origin\":{\"id\":21,\"name\":\"Toronto\",\"population\":2930000},\"destination\":{\"id\":2,\"name\":\"New York\",\"population\":8419000},\"distance\":551,\"flight_time\":600,\"huf_per_km\":55},{\"id\":18,\"airline\":{\"id\":6,\"name\":\"China Southern Airlines\"},\"origin\":{\"id\":22,\"name\":\"Berlin\",\"population\":3645000},\"destination\":{\"id\":10,\"name\":\"Los Angeles\",\"population\":3971000},\"distance\":7500,\"flight_time\":570,\"huf_per_km\":55},{\"id\":19,\"airline\":{\"id\":4,\"name\":\"Emirates\"},\"origin\":{\"id\":23,\"name\":\"Madrid\",\"population\":3265000},\"destination\":{\"id\":2,\"name\":\"New York\",\"population\":8419000},\"distance\":3300,\"flight_time\":340,\"huf_per_km\":40},{\"id\":20,\"airline\":{\"id\":2,\"name\":\"American Airlines\"},\"origin\":{\"id\":2,\"name\":\"New York\",\"population\":8419000},\"destination\":{\"id\":3,\"name\":\"Paris\",\"population\":2148000},\"distance\":5800,\"flight_time\":420,\"huf_per_km\":60},{\"id\":21,\"airline\":{\"id\":5,\"name\":\"Southwest Airlines\"},\"origin\":{\"id\":6,\"name\":\"Sydney\",\"population\":5312000},\"destination\":{\"id\":24,\"name\":\"Bangkok\",\"population\":10560000},\"distance\":9000,\"flight_time\":660,\"huf_per_km\":80},{\"id\":22,\"airline\":{\"id\":6,\"name\":\"China Southern Airlines\"},\"origin\":{\"id\":24,\"name\":\"Bangkok\",\"population\":10560000},\"destination\":{\"id\":25,\"name\":\"Tehran\",\"population\":8840000},\"distance\":1400,\"flight_time\":180,\"huf_per_km\":55},{\"id\":23,\"airline\":{\"id\":7,\"name\":\"China Eastern Airlines\"},\"origin\":{\"id\":5,\"name\":\"Beijing\",\"population\":21540000},\"destination\":{\"id\":26,\"name\":\"Johannesburg\",\"population\":9570000},\"distance\":5600,\"flight_time\":480,\"huf_per_km\":45},{\"id\":24,\"airline\":{\"id\":8,\"name\":\"Air China\"},\"origin\":{\"id\":26,\"name\":\"Johannesburg\",\"population\":9570000},\"destination\":{\"id\":9,\"name\":\"Mumbai\",\"population\":20411000},\"distance\":5600,\"flight_time\":480,\"huf_per_km\":60}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the specified resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/flights\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/flights\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the flight."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"id\":1,\"airline\":{\"id\":4,\"name\":\"Emirates\"},\"origin\":{\"id\":1,\"name\":\"Tokyo\",\"population\":13960000},\"destination\":{\"id\":5,\"name\":\"Beijing\",\"population\":21540000},\"distance\":2100,\"flight_time\":300,\"huf_per_km\":40}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/flights\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/flights\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the flight."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"airline_id\":5,\"origin_id\":2,\"destination_id\":6,\"distance\":2,\"flight_time\":3,\"huf_per_km\":1}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/flights\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/flights\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the flight."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/ping",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/ping",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/ping"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "content-type",
+                                    "value": "text\/html; charset=UTF-8"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "Pong",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/next-id\/airlines",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/next-id\/airlines",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/next-id\/airlines"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "content-type",
+                                    "value": "text\/html; charset=UTF-8"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "11",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/next-id\/cities",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/next-id\/cities",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/next-id\/cities"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "content-type",
+                                    "value": "text\/html; charset=UTF-8"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "31",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/next-id\/flights",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/next-id\/flights",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/next-id\/flights"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "content-type",
+                                    "value": "text\/html; charset=UTF-8"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "25",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

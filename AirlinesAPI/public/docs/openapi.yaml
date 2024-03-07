@@ -1,0 +1,1698 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:5000'
+paths:
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/airlines:
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be between 3 and 50 characters.'
+                  example: yxw
+              required:
+                - name
+      security: []
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: 'Delta Air Lines'
+                    -
+                      id: 2
+                      name: 'American Airlines'
+                    -
+                      id: 3
+                      name: 'United Airlines'
+                    -
+                      id: 4
+                      name: Emirates
+                    -
+                      id: 5
+                      name: 'Southwest Airlines'
+                    -
+                      id: 6
+                      name: 'China Southern Airlines'
+                    -
+                      id: 7
+                      name: 'China Eastern Airlines'
+                    -
+                      id: 8
+                      name: 'Air China'
+                    -
+                      id: 9
+                      name: 'Air Canada'
+                    -
+                      id: 10
+                      name: 'Qatar Airways'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'Delta Air Lines'
+                      -
+                        id: 2
+                        name: 'American Airlines'
+                      -
+                        id: 3
+                        name: 'United Airlines'
+                      -
+                        id: 4
+                        name: Emirates
+                      -
+                        id: 5
+                        name: 'Southwest Airlines'
+                      -
+                        id: 6
+                        name: 'China Southern Airlines'
+                      -
+                        id: 7
+                        name: 'China Eastern Airlines'
+                      -
+                        id: 8
+                        name: 'Air China'
+                      -
+                        id: 9
+                        name: 'Air Canada'
+                      -
+                        id: 10
+                        name: 'Qatar Airways'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'Delta Air Lines'
+      tags:
+        - Endpoints
+      security: []
+  '/api/airlines/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'Delta Air Lines'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'Delta Air Lines'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be between 3 and 50 characters.'
+                  example: njd
+              required:
+                - name
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the airline.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/cities:
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be between 3 and 50 characters.'
+                  example: gotk
+                population:
+                  type: integer
+                  description: ''
+                  example: 17
+              required:
+                - name
+                - population
+      security: []
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: Tokyo
+                      population: 13960000
+                    -
+                      id: 2
+                      name: 'New York'
+                      population: 8419000
+                    -
+                      id: 3
+                      name: Paris
+                      population: 2148000
+                    -
+                      id: 4
+                      name: Moscow
+                      population: 11920000
+                    -
+                      id: 5
+                      name: Beijing
+                      population: 21540000
+                    -
+                      id: 6
+                      name: Sydney
+                      population: 5312000
+                    -
+                      id: 7
+                      name: 'Rio de Janeiro'
+                      population: 6748000
+                    -
+                      id: 8
+                      name: Cairo
+                      population: 10200000
+                    -
+                      id: 9
+                      name: Mumbai
+                      population: 20411000
+                    -
+                      id: 10
+                      name: 'Los Angeles'
+                      population: 3971000
+                    -
+                      id: 11
+                      name: Shanghai
+                      population: 26320000
+                    -
+                      id: 12
+                      name: Istanbul
+                      population: 15460000
+                    -
+                      id: 13
+                      name: Karachi
+                      population: 16000000
+                    -
+                      id: 14
+                      name: Seoul
+                      population: 9776000
+                    -
+                      id: 15
+                      name: Lagos
+                      population: 14000000
+                    -
+                      id: 16
+                      name: Jakarta
+                      population: 10750000
+                    -
+                      id: 17
+                      name: 'São Paulo'
+                      population: 12300000
+                    -
+                      id: 18
+                      name: 'Mexico City'
+                      population: 9200000
+                    -
+                      id: 19
+                      name: Delhi
+                      population: 19000000
+                    -
+                      id: 20
+                      name: Manila
+                      population: 13900000
+                    -
+                      id: 21
+                      name: Toronto
+                      population: 2930000
+                    -
+                      id: 22
+                      name: Berlin
+                      population: 3645000
+                    -
+                      id: 23
+                      name: Madrid
+                      population: 3265000
+                    -
+                      id: 24
+                      name: Bangkok
+                      population: 10560000
+                    -
+                      id: 25
+                      name: Tehran
+                      population: 8840000
+                    -
+                      id: 26
+                      name: Johannesburg
+                      population: 9570000
+                    -
+                      id: 27
+                      name: 'Buenos Aires'
+                      population: 15100000
+                    -
+                      id: 28
+                      name: Taipei
+                      population: 7870000
+                    -
+                      id: 29
+                      name: Lima
+                      population: 10750000
+                    -
+                      id: 30
+                      name: Budapest
+                      population: 1700000
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: Tokyo
+                        population: 13960000
+                      -
+                        id: 2
+                        name: 'New York'
+                        population: 8419000
+                      -
+                        id: 3
+                        name: Paris
+                        population: 2148000
+                      -
+                        id: 4
+                        name: Moscow
+                        population: 11920000
+                      -
+                        id: 5
+                        name: Beijing
+                        population: 21540000
+                      -
+                        id: 6
+                        name: Sydney
+                        population: 5312000
+                      -
+                        id: 7
+                        name: 'Rio de Janeiro'
+                        population: 6748000
+                      -
+                        id: 8
+                        name: Cairo
+                        population: 10200000
+                      -
+                        id: 9
+                        name: Mumbai
+                        population: 20411000
+                      -
+                        id: 10
+                        name: 'Los Angeles'
+                        population: 3971000
+                      -
+                        id: 11
+                        name: Shanghai
+                        population: 26320000
+                      -
+                        id: 12
+                        name: Istanbul
+                        population: 15460000
+                      -
+                        id: 13
+                        name: Karachi
+                        population: 16000000
+                      -
+                        id: 14
+                        name: Seoul
+                        population: 9776000
+                      -
+                        id: 15
+                        name: Lagos
+                        population: 14000000
+                      -
+                        id: 16
+                        name: Jakarta
+                        population: 10750000
+                      -
+                        id: 17
+                        name: 'São Paulo'
+                        population: 12300000
+                      -
+                        id: 18
+                        name: 'Mexico City'
+                        population: 9200000
+                      -
+                        id: 19
+                        name: Delhi
+                        population: 19000000
+                      -
+                        id: 20
+                        name: Manila
+                        population: 13900000
+                      -
+                        id: 21
+                        name: Toronto
+                        population: 2930000
+                      -
+                        id: 22
+                        name: Berlin
+                        population: 3645000
+                      -
+                        id: 23
+                        name: Madrid
+                        population: 3265000
+                      -
+                        id: 24
+                        name: Bangkok
+                        population: 10560000
+                      -
+                        id: 25
+                        name: Tehran
+                        population: 8840000
+                      -
+                        id: 26
+                        name: Johannesburg
+                        population: 9570000
+                      -
+                        id: 27
+                        name: 'Buenos Aires'
+                        population: 15100000
+                      -
+                        id: 28
+                        name: Taipei
+                        population: 7870000
+                      -
+                        id: 29
+                        name: Lima
+                        population: 10750000
+                      -
+                        id: 30
+                        name: Budapest
+                        population: 1700000
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: Tokyo
+                        population:
+                          type: integer
+                          example: 13960000
+      tags:
+        - Endpoints
+      security: []
+  '/api/cities/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: Tokyo
+                    population: 13960000
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: Tokyo
+                      population:
+                        type: integer
+                        example: 13960000
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be between 3 and 50 characters.'
+                  example: xac
+                population:
+                  type: integer
+                  description: ''
+                  example: 6
+              required:
+                - name
+                - population
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the city.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/flights:
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                airline_id:
+                  type: integer
+                  description: ''
+                  example: 10
+                origin_id:
+                  type: integer
+                  description: ''
+                  example: 8
+                destination_id:
+                  type: integer
+                  description: ''
+                  example: 5
+                distance:
+                  type: integer
+                  description: ''
+                  example: 7
+                flight_time:
+                  type: integer
+                  description: ''
+                  example: 1
+                huf_per_km:
+                  type: integer
+                  description: ''
+                  example: 5
+              required:
+                - airline_id
+                - origin_id
+                - destination_id
+                - distance
+                - flight_time
+                - huf_per_km
+      security: []
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      airline:
+                        id: 4
+                        name: Emirates
+                      origin:
+                        id: 1
+                        name: Tokyo
+                        population: 13960000
+                      destination:
+                        id: 5
+                        name: Beijing
+                        population: 21540000
+                      distance: 2100
+                      flight_time: 300
+                      huf_per_km: 40
+                    -
+                      id: 2
+                      airline:
+                        id: 1
+                        name: 'Delta Air Lines'
+                      origin:
+                        id: 2
+                        name: 'New York'
+                        population: 8419000
+                      destination:
+                        id: 10
+                        name: 'Los Angeles'
+                        population: 3971000
+                      distance: 450
+                      flight_time: 540
+                      huf_per_km: 50
+                    -
+                      id: 3
+                      airline:
+                        id: 2
+                        name: 'American Airlines'
+                      origin:
+                        id: 2
+                        name: 'New York'
+                        population: 8419000
+                      destination:
+                        id: 1
+                        name: Tokyo
+                        population: 13960000
+                      distance: 1080
+                      flight_time: 650
+                      huf_per_km: 60
+                    -
+                      id: 4
+                      airline:
+                        id: 3
+                        name: 'United Airlines'
+                      origin:
+                        id: 2
+                        name: 'New York'
+                        population: 8419000
+                      destination:
+                        id: 3
+                        name: Paris
+                        population: 2148000
+                      distance: 5800
+                      flight_time: 420
+                      huf_per_km: 70
+                    -
+                      id: 5
+                      airline:
+                        id: 5
+                        name: 'Southwest Airlines'
+                      origin:
+                        id: 10
+                        name: 'Los Angeles'
+                        population: 3971000
+                      destination:
+                        id: 2
+                        name: 'New York'
+                        population: 8419000
+                      distance: 4500
+                      flight_time: 540
+                      huf_per_km: 80
+                    -
+                      id: 6
+                      airline:
+                        id: 7
+                        name: 'China Eastern Airlines'
+                      origin:
+                        id: 3
+                        name: Paris
+                        population: 2148000
+                      destination:
+                        id: 4
+                        name: Moscow
+                        population: 11920000
+                      distance: 2800
+                      flight_time: 320
+                      huf_per_km: 45
+                    -
+                      id: 7
+                      airline:
+                        id: 6
+                        name: 'China Southern Airlines'
+                      origin:
+                        id: 5
+                        name: Beijing
+                        population: 21540000
+                      destination:
+                        id: 11
+                        name: Shanghai
+                        population: 26320000
+                      distance: 1800
+                      flight_time: 240
+                      huf_per_km: 55
+                    -
+                      id: 8
+                      airline:
+                        id: 8
+                        name: 'Air China'
+                      origin:
+                        id: 4
+                        name: Moscow
+                        population: 11920000
+                      destination:
+                        id: 6
+                        name: Sydney
+                        population: 5312000
+                      distance: 9000
+                      flight_time: 660
+                      huf_per_km: 55
+                    -
+                      id: 9
+                      airline:
+                        id: 1
+                        name: 'Delta Air Lines'
+                      origin:
+                        id: 7
+                        name: 'Rio de Janeiro'
+                        population: 6748000
+                      destination:
+                        id: 8
+                        name: Cairo
+                        population: 10200000
+                      distance: 11000
+                      flight_time: 780
+                      huf_per_km: 50
+                    -
+                      id: 10
+                      airline:
+                        id: 2
+                        name: 'American Airlines'
+                      origin:
+                        id: 9
+                        name: Mumbai
+                        population: 20411000
+                      destination:
+                        id: 10
+                        name: 'Los Angeles'
+                        population: 3971000
+                      distance: 14000
+                      flight_time: 840
+                      huf_per_km: 60
+                    -
+                      id: 11
+                      airline:
+                        id: 3
+                        name: 'United Airlines'
+                      origin:
+                        id: 11
+                        name: Shanghai
+                        population: 26320000
+                      destination:
+                        id: 12
+                        name: Istanbul
+                        population: 15460000
+                      distance: 2200
+                      flight_time: 300
+                      huf_per_km: 70
+                    -
+                      id: 12
+                      airline:
+                        id: 4
+                        name: Emirates
+                      origin:
+                        id: 13
+                        name: Karachi
+                        population: 16000000
+                      destination:
+                        id: 14
+                        name: Seoul
+                        population: 9776000
+                      distance: 2000
+                      flight_time: 280
+                      huf_per_km: 40
+                    -
+                      id: 13
+                      airline:
+                        id: 5
+                        name: 'Southwest Airlines'
+                      origin:
+                        id: 15
+                        name: Lagos
+                        population: 14000000
+                      destination:
+                        id: 16
+                        name: Jakarta
+                        population: 10750000
+                      distance: 12000
+                      flight_time: 720
+                      huf_per_km: 80
+                    -
+                      id: 14
+                      airline:
+                        id: 6
+                        name: 'China Southern Airlines'
+                      origin:
+                        id: 17
+                        name: 'São Paulo'
+                        population: 12300000
+                      destination:
+                        id: 18
+                        name: 'Mexico City'
+                        population: 9200000
+                      distance: 900
+                      flight_time: 660
+                      huf_per_km: 55
+                    -
+                      id: 15
+                      airline:
+                        id: 7
+                        name: 'China Eastern Airlines'
+                      origin:
+                        id: 19
+                        name: Delhi
+                        population: 19000000
+                      destination:
+                        id: 20
+                        name: Manila
+                        population: 13900000
+                      distance: 500
+                      flight_time: 360
+                      huf_per_km: 45
+                    -
+                      id: 16
+                      airline:
+                        id: 10
+                        name: 'Qatar Airways'
+                      origin:
+                        id: 21
+                        name: Toronto
+                        population: 2930000
+                      destination:
+                        id: 22
+                        name: Berlin
+                        population: 3645000
+                      distance: 6500
+                      flight_time: 600
+                      huf_per_km: 55
+                    -
+                      id: 17
+                      airline:
+                        id: 2
+                        name: 'American Airlines'
+                      origin:
+                        id: 21
+                        name: Toronto
+                        population: 2930000
+                      destination:
+                        id: 2
+                        name: 'New York'
+                        population: 8419000
+                      distance: 551
+                      flight_time: 600
+                      huf_per_km: 55
+                    -
+                      id: 18
+                      airline:
+                        id: 6
+                        name: 'China Southern Airlines'
+                      origin:
+                        id: 22
+                        name: Berlin
+                        population: 3645000
+                      destination:
+                        id: 10
+                        name: 'Los Angeles'
+                        population: 3971000
+                      distance: 7500
+                      flight_time: 570
+                      huf_per_km: 55
+                    -
+                      id: 19
+                      airline:
+                        id: 4
+                        name: Emirates
+                      origin:
+                        id: 23
+                        name: Madrid
+                        population: 3265000
+                      destination:
+                        id: 2
+                        name: 'New York'
+                        population: 8419000
+                      distance: 3300
+                      flight_time: 340
+                      huf_per_km: 40
+                    -
+                      id: 20
+                      airline:
+                        id: 2
+                        name: 'American Airlines'
+                      origin:
+                        id: 2
+                        name: 'New York'
+                        population: 8419000
+                      destination:
+                        id: 3
+                        name: Paris
+                        population: 2148000
+                      distance: 5800
+                      flight_time: 420
+                      huf_per_km: 60
+                    -
+                      id: 21
+                      airline:
+                        id: 5
+                        name: 'Southwest Airlines'
+                      origin:
+                        id: 6
+                        name: Sydney
+                        population: 5312000
+                      destination:
+                        id: 24
+                        name: Bangkok
+                        population: 10560000
+                      distance: 9000
+                      flight_time: 660
+                      huf_per_km: 80
+                    -
+                      id: 22
+                      airline:
+                        id: 6
+                        name: 'China Southern Airlines'
+                      origin:
+                        id: 24
+                        name: Bangkok
+                        population: 10560000
+                      destination:
+                        id: 25
+                        name: Tehran
+                        population: 8840000
+                      distance: 1400
+                      flight_time: 180
+                      huf_per_km: 55
+                    -
+                      id: 23
+                      airline:
+                        id: 7
+                        name: 'China Eastern Airlines'
+                      origin:
+                        id: 5
+                        name: Beijing
+                        population: 21540000
+                      destination:
+                        id: 26
+                        name: Johannesburg
+                        population: 9570000
+                      distance: 5600
+                      flight_time: 480
+                      huf_per_km: 45
+                    -
+                      id: 24
+                      airline:
+                        id: 8
+                        name: 'Air China'
+                      origin:
+                        id: 26
+                        name: Johannesburg
+                        population: 9570000
+                      destination:
+                        id: 9
+                        name: Mumbai
+                        population: 20411000
+                      distance: 5600
+                      flight_time: 480
+                      huf_per_km: 60
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        airline:
+                          id: 4
+                          name: Emirates
+                        origin:
+                          id: 1
+                          name: Tokyo
+                          population: 13960000
+                        destination:
+                          id: 5
+                          name: Beijing
+                          population: 21540000
+                        distance: 2100
+                        flight_time: 300
+                        huf_per_km: 40
+                      -
+                        id: 2
+                        airline:
+                          id: 1
+                          name: 'Delta Air Lines'
+                        origin:
+                          id: 2
+                          name: 'New York'
+                          population: 8419000
+                        destination:
+                          id: 10
+                          name: 'Los Angeles'
+                          population: 3971000
+                        distance: 450
+                        flight_time: 540
+                        huf_per_km: 50
+                      -
+                        id: 3
+                        airline:
+                          id: 2
+                          name: 'American Airlines'
+                        origin:
+                          id: 2
+                          name: 'New York'
+                          population: 8419000
+                        destination:
+                          id: 1
+                          name: Tokyo
+                          population: 13960000
+                        distance: 1080
+                        flight_time: 650
+                        huf_per_km: 60
+                      -
+                        id: 4
+                        airline:
+                          id: 3
+                          name: 'United Airlines'
+                        origin:
+                          id: 2
+                          name: 'New York'
+                          population: 8419000
+                        destination:
+                          id: 3
+                          name: Paris
+                          population: 2148000
+                        distance: 5800
+                        flight_time: 420
+                        huf_per_km: 70
+                      -
+                        id: 5
+                        airline:
+                          id: 5
+                          name: 'Southwest Airlines'
+                        origin:
+                          id: 10
+                          name: 'Los Angeles'
+                          population: 3971000
+                        destination:
+                          id: 2
+                          name: 'New York'
+                          population: 8419000
+                        distance: 4500
+                        flight_time: 540
+                        huf_per_km: 80
+                      -
+                        id: 6
+                        airline:
+                          id: 7
+                          name: 'China Eastern Airlines'
+                        origin:
+                          id: 3
+                          name: Paris
+                          population: 2148000
+                        destination:
+                          id: 4
+                          name: Moscow
+                          population: 11920000
+                        distance: 2800
+                        flight_time: 320
+                        huf_per_km: 45
+                      -
+                        id: 7
+                        airline:
+                          id: 6
+                          name: 'China Southern Airlines'
+                        origin:
+                          id: 5
+                          name: Beijing
+                          population: 21540000
+                        destination:
+                          id: 11
+                          name: Shanghai
+                          population: 26320000
+                        distance: 1800
+                        flight_time: 240
+                        huf_per_km: 55
+                      -
+                        id: 8
+                        airline:
+                          id: 8
+                          name: 'Air China'
+                        origin:
+                          id: 4
+                          name: Moscow
+                          population: 11920000
+                        destination:
+                          id: 6
+                          name: Sydney
+                          population: 5312000
+                        distance: 9000
+                        flight_time: 660
+                        huf_per_km: 55
+                      -
+                        id: 9
+                        airline:
+                          id: 1
+                          name: 'Delta Air Lines'
+                        origin:
+                          id: 7
+                          name: 'Rio de Janeiro'
+                          population: 6748000
+                        destination:
+                          id: 8
+                          name: Cairo
+                          population: 10200000
+                        distance: 11000
+                        flight_time: 780
+                        huf_per_km: 50
+                      -
+                        id: 10
+                        airline:
+                          id: 2
+                          name: 'American Airlines'
+                        origin:
+                          id: 9
+                          name: Mumbai
+                          population: 20411000
+                        destination:
+                          id: 10
+                          name: 'Los Angeles'
+                          population: 3971000
+                        distance: 14000
+                        flight_time: 840
+                        huf_per_km: 60
+                      -
+                        id: 11
+                        airline:
+                          id: 3
+                          name: 'United Airlines'
+                        origin:
+                          id: 11
+                          name: Shanghai
+                          population: 26320000
+                        destination:
+                          id: 12
+                          name: Istanbul
+                          population: 15460000
+                        distance: 2200
+                        flight_time: 300
+                        huf_per_km: 70
+                      -
+                        id: 12
+                        airline:
+                          id: 4
+                          name: Emirates
+                        origin:
+                          id: 13
+                          name: Karachi
+                          population: 16000000
+                        destination:
+                          id: 14
+                          name: Seoul
+                          population: 9776000
+                        distance: 2000
+                        flight_time: 280
+                        huf_per_km: 40
+                      -
+                        id: 13
+                        airline:
+                          id: 5
+                          name: 'Southwest Airlines'
+                        origin:
+                          id: 15
+                          name: Lagos
+                          population: 14000000
+                        destination:
+                          id: 16
+                          name: Jakarta
+                          population: 10750000
+                        distance: 12000
+                        flight_time: 720
+                        huf_per_km: 80
+                      -
+                        id: 14
+                        airline:
+                          id: 6
+                          name: 'China Southern Airlines'
+                        origin:
+                          id: 17
+                          name: 'São Paulo'
+                          population: 12300000
+                        destination:
+                          id: 18
+                          name: 'Mexico City'
+                          population: 9200000
+                        distance: 900
+                        flight_time: 660
+                        huf_per_km: 55
+                      -
+                        id: 15
+                        airline:
+                          id: 7
+                          name: 'China Eastern Airlines'
+                        origin:
+                          id: 19
+                          name: Delhi
+                          population: 19000000
+                        destination:
+                          id: 20
+                          name: Manila
+                          population: 13900000
+                        distance: 500
+                        flight_time: 360
+                        huf_per_km: 45
+                      -
+                        id: 16
+                        airline:
+                          id: 10
+                          name: 'Qatar Airways'
+                        origin:
+                          id: 21
+                          name: Toronto
+                          population: 2930000
+                        destination:
+                          id: 22
+                          name: Berlin
+                          population: 3645000
+                        distance: 6500
+                        flight_time: 600
+                        huf_per_km: 55
+                      -
+                        id: 17
+                        airline:
+                          id: 2
+                          name: 'American Airlines'
+                        origin:
+                          id: 21
+                          name: Toronto
+                          population: 2930000
+                        destination:
+                          id: 2
+                          name: 'New York'
+                          population: 8419000
+                        distance: 551
+                        flight_time: 600
+                        huf_per_km: 55
+                      -
+                        id: 18
+                        airline:
+                          id: 6
+                          name: 'China Southern Airlines'
+                        origin:
+                          id: 22
+                          name: Berlin
+                          population: 3645000
+                        destination:
+                          id: 10
+                          name: 'Los Angeles'
+                          population: 3971000
+                        distance: 7500
+                        flight_time: 570
+                        huf_per_km: 55
+                      -
+                        id: 19
+                        airline:
+                          id: 4
+                          name: Emirates
+                        origin:
+                          id: 23
+                          name: Madrid
+                          population: 3265000
+                        destination:
+                          id: 2
+                          name: 'New York'
+                          population: 8419000
+                        distance: 3300
+                        flight_time: 340
+                        huf_per_km: 40
+                      -
+                        id: 20
+                        airline:
+                          id: 2
+                          name: 'American Airlines'
+                        origin:
+                          id: 2
+                          name: 'New York'
+                          population: 8419000
+                        destination:
+                          id: 3
+                          name: Paris
+                          population: 2148000
+                        distance: 5800
+                        flight_time: 420
+                        huf_per_km: 60
+                      -
+                        id: 21
+                        airline:
+                          id: 5
+                          name: 'Southwest Airlines'
+                        origin:
+                          id: 6
+                          name: Sydney
+                          population: 5312000
+                        destination:
+                          id: 24
+                          name: Bangkok
+                          population: 10560000
+                        distance: 9000
+                        flight_time: 660
+                        huf_per_km: 80
+                      -
+                        id: 22
+                        airline:
+                          id: 6
+                          name: 'China Southern Airlines'
+                        origin:
+                          id: 24
+                          name: Bangkok
+                          population: 10560000
+                        destination:
+                          id: 25
+                          name: Tehran
+                          population: 8840000
+                        distance: 1400
+                        flight_time: 180
+                        huf_per_km: 55
+                      -
+                        id: 23
+                        airline:
+                          id: 7
+                          name: 'China Eastern Airlines'
+                        origin:
+                          id: 5
+                          name: Beijing
+                          population: 21540000
+                        destination:
+                          id: 26
+                          name: Johannesburg
+                          population: 9570000
+                        distance: 5600
+                        flight_time: 480
+                        huf_per_km: 45
+                      -
+                        id: 24
+                        airline:
+                          id: 8
+                          name: 'Air China'
+                        origin:
+                          id: 26
+                          name: Johannesburg
+                          population: 9570000
+                        destination:
+                          id: 9
+                          name: Mumbai
+                          population: 20411000
+                        distance: 5600
+                        flight_time: 480
+                        huf_per_km: 60
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        airline:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 4
+                            name:
+                              type: string
+                              example: Emirates
+                        origin:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: Tokyo
+                            population:
+                              type: integer
+                              example: 13960000
+                        destination:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 5
+                            name:
+                              type: string
+                              example: Beijing
+                            population:
+                              type: integer
+                              example: 21540000
+                        distance:
+                          type: integer
+                          example: 2100
+                        flight_time:
+                          type: integer
+                          example: 300
+                        huf_per_km:
+                          type: integer
+                          example: 40
+      tags:
+        - Endpoints
+      security: []
+  '/api/flights/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    airline:
+                      id: 4
+                      name: Emirates
+                    origin:
+                      id: 1
+                      name: Tokyo
+                      population: 13960000
+                    destination:
+                      id: 5
+                      name: Beijing
+                      population: 21540000
+                    distance: 2100
+                    flight_time: 300
+                    huf_per_km: 40
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      airline:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 4
+                          name:
+                            type: string
+                            example: Emirates
+                      origin:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                          name:
+                            type: string
+                            example: Tokyo
+                          population:
+                            type: integer
+                            example: 13960000
+                      destination:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 5
+                          name:
+                            type: string
+                            example: Beijing
+                          population:
+                            type: integer
+                            example: 21540000
+                      distance:
+                        type: integer
+                        example: 2100
+                      flight_time:
+                        type: integer
+                        example: 300
+                      huf_per_km:
+                        type: integer
+                        example: 40
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                airline_id:
+                  type: integer
+                  description: ''
+                  example: 5
+                origin_id:
+                  type: integer
+                  description: ''
+                  example: 2
+                destination_id:
+                  type: integer
+                  description: ''
+                  example: 6
+                distance:
+                  type: integer
+                  description: ''
+                  example: 2
+                flight_time:
+                  type: integer
+                  description: ''
+                  example: 3
+                huf_per_km:
+                  type: integer
+                  description: ''
+                  example: 1
+              required:
+                - airline_id
+                - origin_id
+                - destination_id
+                - distance
+                - flight_time
+                - huf_per_km
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the flight.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/ping:
+    get:
+      summary: ''
+      operationId: getApiPing
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Pong
+      tags:
+        - Endpoints
+      security: []
+  /api/next-id/airlines:
+    get:
+      summary: ''
+      operationId: getApiNextIdAirlines
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 11
+      tags:
+        - Endpoints
+      security: []
+  /api/next-id/cities:
+    get:
+      summary: ''
+      operationId: getApiNextIdCities
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 31
+      tags:
+        - Endpoints
+      security: []
+  /api/next-id/flights:
+    get:
+      summary: ''
+      operationId: getApiNextIdFlights
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 25
+      tags:
+        - Endpoints
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''
