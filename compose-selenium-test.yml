@@ -101,8 +101,8 @@ services:
     selenium-tests:
         image: mcr.microsoft.com/dotnet/sdk:8.0
         volumes:
-            - ./AirportWeb.Tests:/selenium-tests
-            - ./AirportWeb.Tests:/testresults
+            - ./AirlinesWeb.Tests:/selenium-tests
+            - ./AirlinesWeb.Tests:/testresults
         depends_on:
             selenium-hub:
                 condition: service_started
