@@ -61,3 +61,13 @@ services:
                 RUN echo '<Directory "/usr/local/apache2/htdocs">'          >> /usr/local/apache2/conf/httpd.conf
                 RUN echo '    AllowOverride All'                            >> /usr/local/apache2/conf/httpd.conf
                 RUN echo '</Directory>'                                     >> /usr/local/apache2/conf/httpd.conf
+
+    api-tests:
+        build:
+            context: ..
+            dockerfile_inline: |
+                FROM mcr.microsoft.com/dotnet/sdk:8.0
+                COPY ./AirlinesAPI.Models /t/AirlinesAPI.Models
+                COPY ./AirlinesAPI.Tests /t/AirlinesAPI.Tests
+                WORKDIR /t/AirlinesAPI.Tests
+        entrypoint: sh -c "dotnet test -l \"liquid.md;logfilename=/tr/api-tests.md\"; chown -R $HOST_UID:$HOST_GID /tr"

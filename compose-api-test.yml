@@ -1,69 +1,57 @@
 version: '3.8'
 
 services:
-    test-web:
-        container_name: airlines-test-web
-        image: nginx:1.25-alpine3.17
-        volumes:
-            - ./AirlinesAPI:/www:ro
-            - ./AirlinesAPI/docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-            - ./AirlinesAPI/docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
-        depends_on:
-            - test-app
+    db:
+        extends:
+            file: ./docker/docker-services.yml
+            service: db
         networks:
-            - test-net
+            - api-test-net
 
-    test-app:
-        container_name: app
-        image: rcsnjszg/backend2023
-        build:
-            context: ./AirlinesAPI/docker/php
-            dockerfile: ./AirlinesAPI/Dockerfile
-        volumes:
-            - ./AirlinesAPI/:/www:rw
-            - ./TestData:/www/database/seeders
+    app:
+        extends:
+            file: ./docker/docker-services.yml
+            service: app
         networks:
-            - test-net
+            - api-test-net
+        volumes:
+            - ./AirlinesAPI/:/www
+            - ./TestData:/www/database/seeders:ro
+            - ./docker/conf/.env:/www/.env
         environment:
             TESTING: true
 
-    test-db:
-        container_name: db
-        image: mysql:8.0.30
-        command: --default-authentication-plugin=mysql_native_password
-        environment:
-            - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
-            - MYSQL_USER=${DB_USERNAME}
-            - MYSQL_PASSWORD=${DB_PASSWORD}
-            - MYSQL_DATABASE=${DB_DATABASE}
-            - TZ="${TZ}"
+    web:
+        extends:
+            file: ./docker/docker-services.yml
+            service: web
         networks:
-            - test-net
-
-    api-tests:
-        container_name: airlines-api-tests
-        image: mcr.microsoft.com/dotnet/sdk:8.0
+            - api-test-net
         volumes:
-            - ./AirlinesAPI.Models:/src/AirlinesAPI.Models:ro
-            - ./AirlinesAPI.Tests:/src/AirlinesAPI.Tests:ro
-            - ./TestResults:/tr
-            - api-tests:/test
-        networks:
-            - test-net
-        working_dir: /test/AirlinesAPI.Tests
-        environment:
-            API_ADDRESS: airlines-test-web
-        entrypoint: sh -c "cp -aru /src/. /test && dotnet test -l \"liquid.md;logfilename=/tr/api-tests.md\"; chown -R $HOST_UID:$HOST_GID /tr"
+            - ./AirlinesAPI/:/www:rw
+            - ./docker/conf/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+            - ./docker/conf/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
+        ports:
+            - 50000:80
         depends_on:
-            test-web:
+            db:
                 condition: service_started
-            test-db:
+            app:
                 condition: service_started
 
-volumes:
     api-tests:
-        name: airlines-api-tests
+        extends:
+            file: ./docker/docker-services.yml
+            service: api-tests
+        networks:
+            - api-test-net
+        volumes:
+            - ./TestResults:/tr
+        environment:
+            API_ADDRESS: web
+        depends_on:
+            web:
+                condition: service_started
 
 networks:
-    test-net:
-        name: airlines-test-network
+    api-test-net:
