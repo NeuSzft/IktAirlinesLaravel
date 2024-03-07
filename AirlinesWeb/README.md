@@ -1,4 +1,4 @@
-# User Documentation for Airlines website
+# User Manual for Airlines website
 
 ## Introduction
 Welcome to our **Airlines** Flight Booking Website.
