@@ -2,7 +2,7 @@
 
 cp -nv ./docker/conf/.env.example ./docker/conf/.env
 
-ARGS='-f compose-api-test.yml --env-file ./docker/conf/.env'
+ARGS='-f ./testing/api/compose.yml --env-file ./docker/conf/.env'
 
 export HOST_UID=$(id -u)
 export HOST_GID=$(id -g)

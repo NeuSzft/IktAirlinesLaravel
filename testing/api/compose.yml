@@ -3,34 +3,34 @@ version: '3.8'
 services:
     db:
         extends:
-            file: ./docker/docker-services.yml
+            file: ../../docker/docker-services.yml
             service: db
         networks:
             - api-test-net
 
     app:
         extends:
-            file: ./docker/docker-services.yml
+            file: ../../docker/docker-services.yml
             service: app
         networks:
             - api-test-net
         volumes:
-            - ./AirlinesAPI/:/www
-            - ./TestData:/www/database/seeders:ro
-            - ./docker/conf/.env:/www/.env
+            - ../../AirlinesAPI/:/www
+            - ../../docker/conf/.env:/www/.env
+            - ./seeders:/www/database/seeders:ro
         environment:
             TESTING: true
 
     web:
         extends:
-            file: ./docker/docker-services.yml
+            file: ../../docker/docker-services.yml
             service: web
         networks:
             - api-test-net
         volumes:
-            - ./AirlinesAPI/:/www:rw
-            - ./docker/conf/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-            - ./docker/conf/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
+            - ../../AirlinesAPI/:/www:rw
+            - ../../docker/conf/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+            - ../../docker/conf/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
         ports:
             - 50000:80
         depends_on:
@@ -41,12 +41,12 @@ services:
 
     api-tests:
         extends:
-            file: ./docker/docker-services.yml
+            file: ../../docker/docker-services.yml
             service: api-tests
         networks:
             - api-test-net
         volumes:
-            - ./TestResults:/tr
+            - ../../TestResults:/tr
         environment:
             API_ADDRESS: web
         depends_on:
