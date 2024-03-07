@@ -24,12 +24,12 @@ public static class Utils {
         try {
             using Ping ping = new();
             ping.Send(apiAddress, 5000);
-        }
-        catch {
+        } catch {
             PingFailed = true;
         }
 
         Client = new() { BaseAddress = new($"http://{apiAddress}") };
+        Client.DefaultRequestHeaders.Accept.Add(new("application/json"));
     }
 
     public static async Task Initialize() {
