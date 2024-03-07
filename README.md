@@ -16,11 +16,11 @@ This project contains an API for managing a PostgreSQL database, a web interface
 
 The API is made using [APS.NET Core](https://github.com/dotnet/aspnetcore) and it's [Minimal APIs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis/overview?view=aspnetcore-8.0) approach.
 
-List of available [endpoints](./AirportManagement/docs/endpoints.md).
+List of available [endpoints](./AirlinesAPI/endpoints.md).
 
 ## Web Interface
 
-[User manual](./AirportWeb/README.md)
+[User manual](./AirlinesWeb/README.md)
 
 ## Desktop Application
 
@@ -28,7 +28,7 @@ The desktop application's purpose is to make adding, updating and removing entri
 
 It is made using the [Windows Presentation Foundation](https://github.com/dotnet/wpf) framework and is only available for windows machines.
 
-Check the [user manual](./AirportManagement/docs/desktop-app-manual.md) for help.
+Check the [user manual](./AirlinesManagement/docs/desktop-app-manual.md) for help.
 
 ## Getting started
 
@@ -47,5 +47,5 @@ The tests can be run using [docker compose](https://github.com/docker/compose) a
 
 | Test | Compose File | Shell Script | Files | Latest Results |
 | --- | --- | --- | --- | --- |
-| API tests | [compose.test-api.yml](./compose.test-api.yml) | [test-api.sh](./test-api.sh) | [ApiTests](./AirlinesAPI.Tests) | [view](./AirportManagement/api-test-results.md) |
-| Selenium tests | [compose.test-web.yml](./compose.test-web.yml) | [test-web.sh](./test-web.sh) | [SeleniumTests.cs](./AirportWeb.Tests/SeleniumTests.cs) | [view](./AirportWebTest/README.md) |
+| API tests | [compose.test-api.yml](./compose.test-api.yml) | [test-api.sh](./test-api.sh) | [ApiTests](./AirlinesAPI.Tests) | [view](./AirlinesManagement/api-test-results.md) |
+| Selenium tests | [compose.test-web.yml](./compose.test-web.yml) | [test-web.sh](./test-web.sh) | [SeleniumTests.cs](./AirlinesWeb.Tests/SeleniumTests.cs) | [view](./AirlinesWebTest/README.md) |
