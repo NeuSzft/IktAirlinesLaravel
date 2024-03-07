@@ -46,5 +46,5 @@ The tests can be run using [docker compose](https://github.com/docker/compose) a
 
 | Test | Compose File | Shell Script | Files | Latest Results |
 | --- | --- | --- | --- | --- |
-| API tests | [compose.test-api.yml](./testing/api/compose.yml) | [test-api.sh](./test-api.sh) | [ApiTests](./AirlinesAPI.Tests) | [view](./docs/api-test-results.md) |
-| Selenium tests | [compose.test-web.yml](./compose.test-web.yml) | [test-web.sh](./test-web.sh) | [SeleniumTests.cs](./AirlinesWeb.Tests/SeleniumTests.cs) | [view](./AirlinesWebTest/README.md) |
+| API tests | [compose.test-api.yml](./testing/api/compose.yml) | [test.sh](./test.sh) | [PostTests.cs](./AirlinesAPI.Tests/PostTests.cs)<br>[GetTests.cs](./AirlinesAPI.Tests/GetTests.cs)<br>[PutTests.cs](./AirlinesAPI.Tests/PutTests.cs)<br>[DeleteTests.cs](./AirlinesAPI.Tests/DeleteTests.cs) | [view](./docs/api-test-results.md) |
+| Selenium tests | [compose.test-web.yml](./compose.test-web.yml) | [selenium.sh](./selenium.sh) | [SeleniumTests.cs](./AirlinesWeb.Tests/SeleniumTests.cs) | [view](./AirlinesWebTest/README.md) |
