@@ -60,7 +60,7 @@ public class PutTests {
             HufPerKm      = id * 3
         };
         var response = await Utils.Client.PutAsJsonAsync($"/api/flights/{id}", flight);
-        Assert.AreEqual(HttpStatusCode.MethodNotAllowed, response.StatusCode);
+        Assert.AreEqual(HttpStatusCode.UnprocessableContent, response.StatusCode);
     }
 
     [TestMethod]
@@ -106,13 +106,13 @@ public class PutTests {
             HufPerKm      = id * 6
         };
         var response = await Utils.Client.PutAsJsonAsync($"/api/flights/{id}", flight);
-        Assert.AreEqual(HttpStatusCode.MethodNotAllowed, response.StatusCode);
+        Assert.AreEqual(HttpStatusCode.UnprocessableContent, response.StatusCode);
     }
 
     [TestMethod]
     [DataRow("/api/airlines/1"), DataRow("/api/cities/2"), DataRow("/api/flights/3")]
     public async Task PutNullItems(string path) {
         var response = await Utils.Client.PutAsync(path, null);
-        Assert.AreEqual(HttpStatusCode.MethodNotAllowed, response.StatusCode);
+        Assert.AreEqual(HttpStatusCode.UnprocessableContent, response.StatusCode);
     }
 }
